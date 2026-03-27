@@ -1,0 +1,71 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+
+  - name: "posts"
+    label: "Blog Posts"
+    folder: "content/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "⛰️ Trail Report", value: "trail-report" }
+          - { label: "🔥 The Hot Take", value: "hot-take" }
+          - { label: "📖 Story Time", value: "story-time" }
+          - { label: "🎒 Kit Check", value: "kit-check" }
+          - { label: "🚬 In the Humidor", value: "in-the-humidor" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Cover Image", name: "image", widget: "image", required: false }
+      - { label: "Excerpt (short summary)", name: "excerpt", widget: "text", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "products"
+    label: "Product Reviews (Kit Check)"
+    folder: "content/products"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Product Name", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Product Photo", name: "image", widget: "image", required: false }
+      - label: "Star Rating"
+        name: "rating"
+        widget: "select"
+        options:
+          - { label: "⭐ 1 Star", value: "1" }
+          - { label: "⭐⭐ 2 Stars", value: "2" }
+          - { label: "⭐⭐⭐ 3 Stars", value: "3" }
+          - { label: "⭐⭐⭐⭐ 4 Stars", value: "4" }
+          - { label: "⭐⭐⭐⭐⭐ 5 Stars", value: "5" }
+      - { label: "Buy Link (affiliate or product URL)", name: "buy_link", widget: "string", required: false }
+      - { label: "Full Review", name: "body", widget: "markdown", required: false }
+
+  - name: "cigars"
+    label: "Cigar Reviews (In the Humidor)"
+    folder: "content/cigars"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Cigar Name", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Photo", name: "image", widget: "image", required: false }
+      - label: "Rating"
+        name: "rating"
+        widget: "select"
+        options:
+          - { label: "⭐ 1 Star", value: "1" }
+          - { label: "⭐⭐ 2 Stars", value: "2" }
+          - { label: "⭐⭐⭐ 3 Stars", value: "3" }
+          - { label: "⭐⭐⭐⭐ 4 Stars", value: "4" }
+          - { label: "⭐⭐⭐⭐⭐ 5 Stars", value: "5" }
+      - { label: "Where to Buy Link", name: "buy_link", widget: "string", required: false }
+      - { label: "Full Review", name: "body", widget: "markdown", required: false }
